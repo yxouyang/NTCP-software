@@ -1,9 +1,8 @@
 # -*- coding: gb2312 -*-
-# ø™∑¢Õ≈∂” : “Êœ‡π§◊˜ “
-# ø™∑¢»À‘± : ≈∑—Ùª·µ§
-# ø™∑¢ ±º‰ : 2023/12/2 12:33
-# Œƒº˛√˚≥∆ : The algorithm models for NTCP prediction(V2023).py
-# ø™∑¢π§æﬂ : PyCharm
+# ÂºÄÂèëÂõ¢Èòü : ÁõäÁõ∏Â∑•‰ΩúÂÆ§
+# ÂºÄÂèë‰∫∫Âëò : Ê¨ßÈò≥‰ºö‰∏π
+# ÂºÄÂèëÊó∂Èó¥ : 2023/12/2 12:33
+# Êñá‰ª∂ÂêçÁß∞ : The algorithm models for NTCP prediction(V2023).py
 import sys
 import math
 from PyQt5.QtWidgets import *
@@ -48,10 +47,10 @@ class WinForm(QMainWindow):
         font.setBold(True)
         font1 = QFont()
         font1.setPointSize(15)
-        label = QLabel('Software developers£∫Huidan OuYang;Yuze Liu;Zhenyu Xu;Lei Zeng\nOrganizations£∫Jiangxi Agricultural University;\nThe second affiliated hospital of Nanchang university \nYear£∫2024')
+        label = QLabel('Software developersÔºöHuidan OuYang;Yuze Liu;Zhenyu Xu;Lei Zeng\nOrganizationsÔºöJiangxi Agricultural University;\nThe second affiliated hospital of Nanchang university \nYearÔºö2024')
         label.setStyleSheet("QLabel { color : #ff0000; }")
         label.setFont(font1)
-        label2 = QLabel('The algorithm models for NTCP prediction£∫')
+        label2 = QLabel('The algorithm models for NTCP predictionÔºö')
         label2.setStyleSheet("QLabel { color : #ff0000; }")
         label2.setFont(font)
         buttonProbit = QPushButton('Lyman Algorithm Model')
@@ -86,7 +85,7 @@ class WinForm(QMainWindow):
         eud = 0
         options = QFileDialog.Options()
         options |= QFileDialog.ReadOnly
-        fileName, _ = QFileDialog.getOpenFileName(self, 'Select an Excel file', '', 'ExcelŒƒº˛(*.xlsx *.xls)', options=options)
+        fileName, _ = QFileDialog.getOpenFileName(self, 'Select an Excel file', '', 'ExcelÊñá‰ª∂(*.xlsx *.xls)', options=options)
         if fileName:
             print('fileName', fileName)
             workbook = xlrd.open_workbook(fileName)
@@ -97,14 +96,14 @@ class WinForm(QMainWindow):
             eud += float(content1[i]) ** 15 * float(content2[i])
         eud = eud ** (1/15)
         print(eud)
-        print('The Lyman model predicts NTCP results£∫{0}'.format(self.NTCPProbit(0.15,eud,76)))
-        QMessageBox.information(self, 'Predicting temporal lobe injury', 'The Lyman model predicts NTCP results£∫{0}'.format(self.NTCPProbit(0.15,eud,76)))
+        print('The Lyman model predicts NTCP resultsÔºö{0}'.format(self.NTCPProbit(0.15,eud,76)))
+        QMessageBox.information(self, 'Predicting temporal lobe injury', 'The Lyman model predicts NTCP resultsÔºö{0}'.format(self.NTCPProbit(0.15,eud,76)))
 
     def Logit(self,n):
         eud = 0
         options = QFileDialog.Options()
         options |= QFileDialog.ReadOnly
-        fileName, _ = QFileDialog.getOpenFileName(self, 'Select an Excel file', '', 'ExcelŒƒº˛(*.xlsx *.xls)', options=options)
+        fileName, _ = QFileDialog.getOpenFileName(self, 'Select an Excel file', '', 'ExcelÊñá‰ª∂(*.xlsx *.xls)', options=options)
         if fileName:
             print('fileName', fileName)
             workbook = xlrd.open_workbook(fileName)
@@ -115,13 +114,13 @@ class WinForm(QMainWindow):
             eud += float(content1[i]) ** 16 * float(content2[i])
         eud = eud ** (1 / 16)
         print(eud)
-        print('The Logit model predicts NTCP results£∫{0}'.format(self.NTCPLogit(20,eud,80)))
-        QMessageBox.information(self, 'Predicting temporal lobe injury', 'The Logit model predicts NTCP results£∫{0}'.format(self.NTCPLogit(20,eud,80)))
+        print('The Logit model predicts NTCP resultsÔºö{0}'.format(self.NTCPLogit(20,eud,80)))
+        QMessageBox.information(self, 'Predicting temporal lobe injury', 'The Logit model predicts NTCP resultsÔºö{0}'.format(self.NTCPLogit(20,eud,80)))
     def SRU(self,n):
         eud = 0
         options = QFileDialog.Options()
         options |= QFileDialog.ReadOnly
-        fileName, _ = QFileDialog.getOpenFileName(self, 'Select an Excel file', '', 'ExcelŒƒº˛(*.xlsx *.xls)', options=options)
+        fileName, _ = QFileDialog.getOpenFileName(self, 'Select an Excel file', '', 'ExcelÊñá‰ª∂(*.xlsx *.xls)', options=options)
         if fileName:
             print('fileName', fileName)
             workbook = xlrd.open_workbook(fileName)
@@ -132,13 +131,13 @@ class WinForm(QMainWindow):
             eud += content2[i] * math.e ** (0.179 * content1[i])
         eud= math.log(eud) * (1 / 0.179)
         print(eud)
-        print('The SRU model predicts NTCP results£∫{0}'.format(self.NTCPSRU(0.179, eud, 80)))
-        QMessageBox.information(self, 'Predicting temporal lobe injury', 'The SRU model predicts NTCP results£∫{0}'.format(self.NTCPSRU(0.179, eud, 80)))
+        print('The SRU model predicts NTCP resultsÔºö{0}'.format(self.NTCPSRU(0.179, eud, 80)))
+        QMessageBox.information(self, 'Predicting temporal lobe injury', 'The SRU model predicts NTCP resultsÔºö{0}'.format(self.NTCPSRU(0.179, eud, 80)))
     def Poisson(self,n):
         eud = 0
         options = QFileDialog.Options()
         options |= QFileDialog.ReadOnly
-        fileName, _ = QFileDialog.getOpenFileName(self, 'Select an Excel file', '', 'ExcelŒƒº˛(*.xlsx *.xls)', options=options)
+        fileName, _ = QFileDialog.getOpenFileName(self, 'Select an Excel file', '', 'ExcelÊñá‰ª∂(*.xlsx *.xls)', options=options)
         if fileName:
             print('fileName', fileName)
             workbook = xlrd.open_workbook(fileName)
@@ -149,13 +148,13 @@ class WinForm(QMainWindow):
             eud += float(content1[i]) ** 16 * float(content2[i])
         eud = eud ** (1 / 16)
         print(eud)
-        print('The Poisson model predicts NTCP results£∫{0}'.format(self.NTCPPoisson(16, eud, 80)))
-        QMessageBox.information(self, 'Predicting temporal lobe injury', 'The Poisson model predicts NTCP results£∫{0}'.format(self.NTCPPoisson(16, eud, 80)))
+        print('The Poisson model predicts NTCP resultsÔºö{0}'.format(self.NTCPPoisson(16, eud, 80)))
+        QMessageBox.information(self, 'Predicting temporal lobe injury', 'The Poisson model predicts NTCP resultsÔºö{0}'.format(self.NTCPPoisson(16, eud, 80)))
     def logisitic(self,n):
         eud = 0
         options = QFileDialog.Options()
         options |= QFileDialog.ReadOnly
-        fileName, _ = QFileDialog.getOpenFileName(self, 'Select an Excel file', '', 'ExcelŒƒº˛(*.xlsx *.xls)', options=options)
+        fileName, _ = QFileDialog.getOpenFileName(self, 'Select an Excel file', '', 'ExcelÊñá‰ª∂(*.xlsx *.xls)', options=options)
         if fileName:
             print('fileName', fileName)
             workbook = xlrd.open_workbook(fileName)
@@ -166,12 +165,12 @@ class WinForm(QMainWindow):
             eud += float(content1[i]) ** 20 * float(content2[i])
         eud = eud ** (1 / 20)
         print(eud)
-        print('The logisitic model predicts NTCP results£∫{0}'.format(self.NTCPlogistic(-15.7, eud, 0.2)))
-        QMessageBox.information(self, 'Predicting temporal lobe injury', 'The logisitic model predicts NTCP results£∫{0}'.format(self.NTCPlogistic(-15.7, eud, 0.2)))
+        print('The logisitic model predicts NTCP resultsÔºö{0}'.format(self.NTCPlogistic(-15.7, eud, 0.2)))
+        QMessageBox.information(self, 'Predicting temporal lobe injury', 'The logisitic model predicts NTCP resultsÔºö{0}'.format(self.NTCPlogistic(-15.7, eud, 0.2)))
 
 if __name__ == '__main__':
     current = time.localtime()
-    print(' ±º‰£∫', current.tm_year)
+    print('Êó∂Èó¥Ôºö', current.tm_year)
     if current.tm_year != 2024:
         sys.exit()
     app = QApplication(sys.argv)
