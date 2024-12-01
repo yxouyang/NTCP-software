@@ -20,24 +20,6 @@ class WinForm(QMainWindow):
     s4 = 4
     s5 = 5
 
-    def NTCPfProbit(self,x):
-        return math.e ** (-0.5 * x ** 2)
-
-    def NTCPProbit(self,s, u, u50):
-        return (1 / ((2 * math.pi) ** 0.5)) * integrate.quad(self.NTCPfProbit, float('-inf'), s * (u - u50))[0]
-
-    def NTCPLogit(self,k, u, u50):
-        return 1.0 / (1.0 + (u50 / u) ** k)
-
-    def NTCPSRU(self,derta, u, u50):
-        return 1.0 - math.e ** (-1.0 * math.e ** (derta * (u - u50)))
-
-    def NTCPPoisson(self,a, u, u50):
-        return 1.0 - math.e ** (-1.0 * math.log(2) * (u / u50) ** a)
-
-    def NTCPlogistic(self,b1, u, b2):
-        return 1.0 / (1.0 + math.e ** (-b1 - b2 * u))
-
     def __init__(self,parent=None):
         super(WinForm, self).__init__(parent)
         self.setWindowTitle('5 NTCP models')
